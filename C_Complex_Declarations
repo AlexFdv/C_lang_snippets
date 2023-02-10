@@ -1,0 +1,35 @@
+https://cdecl.org/
+https://c-faq.com/decl/spiral.anderson.html
+
+Precedence rules:
+1. Parentheses grouping together parts of a declaration.
+2. The postfix operators: parentheses () indicating a function, and square brackets [] indicating an array.
+3. The prefix operator: the asterisk denoting “pointer to”
+
+
+// `a` is a pointer to int;
+int *a;
+int (*a);
+
+// `a` is an array of pointers.
+// The precedence rules say that the square brackets are higher than the asterisk.
+// So `a` is an array of pointers to a char, not a pointer to an array of characters.
+int *a[];
+
+// `a` is a pointer to an array of ints.
+int (*a)[];
+
+// `foo` is a function that returns pointer to `int`
+int *foo();
+
+// `foo` is a pointer to function that returns `int`;
+int (*foo)();
+
+// `foo` is a pointer to function that returns pointer to int;
+int *(*foo)();
+
+// `foo` is a pointer to function that returns pointer to array of ints
+int (*(*foo)())[]
+
+// ((((`foo` is a function that returning pointer) to array) of pointers) to function that returning int)
+int(*(*foo())[])()
